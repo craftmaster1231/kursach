@@ -3,7 +3,9 @@
 #include <Windows.h>
 #include <fstream>
 #include <string>
-  
+
+struct story_point;
+void print(char *str);
   
 class hero 
 {
@@ -24,9 +26,18 @@ public:
     {
         return bad;
     }
+    void plusLevel()
+    {
+        level += 1;
+    }
+    int get_level()
+    {
+        return level;
+    }
 private: 
     int good = 0;
     int bad = 0;
+    int level =0;
     
 };
 
@@ -38,7 +49,6 @@ void savePlayerLevelInFile(int level) {
     fs.close();
 }
 
-
 std::string readFilePlayerLevel() {
     std::string level;
     const std::string file_name = "player_level.txt";
@@ -49,12 +59,9 @@ std::string readFilePlayerLevel() {
     return level;
 }
 
-void print(char *str) {
-    setlocale(0, "Russian");
-    for (int i = 0; i < strlen(str) ; i++) {
-        std:: cout << str[i];
-        Sleep(80);
-    }
+int main() {
+    return 0;
+
 }
 
 struct story_point {
@@ -62,9 +69,12 @@ struct story_point {
     char text [ ];
 };
 
-int main() {
-    return 0;
-
+void print(char *str) {
+    setlocale(0, "Russian");
+    for (int i = 0; i < strlen(str) ; i++) {
+        std:: cout << str[i];
+        Sleep(80);
+    }
 }
 
 
